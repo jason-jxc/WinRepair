@@ -1,0 +1,82 @@
+﻿<Window x:Class="Fixdows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fixdows" xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="Fixdows" Height="450" Width="800" ResizeMode="CanMinimize">
+    <TabControl x:Name="MainTabs" HorizontalAlignment="Left" Height="418" VerticalAlignment="Top" Width="790">
+        <TabItem Header="Home">
+            <Grid>
+                <Label Content="Hello" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="49" Width="154" FontSize="18" FontFamily="Verdana"/>
+                <Label Content="To repair something, you should find the tab that corresponds to your issue.&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.836,-0.254" Width="482" Height="33" FontSize="14">
+                </Label>
+                <Label Content="Click on a tab (above) to navigate around the software." HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.209,-0.061" Height="35" Width="349" FontSize="14"/>
+                <Button x:Name="UpdateCheck" Content="Check for updates" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Width="127" Click="UpdateCheckButtonClicked"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="18" Width="166">
+                    <Hyperlink NavigateUri="https://github.com/Odyssey346/Fixdows/wiki/Help-for-new-users" RequestNavigate="Hyperlink_RequestNavigate">Need more help? Click here!</Hyperlink>
+                </TextBlock>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Windows Update Fixes">
+            <Grid>
+                <Label Content="Windows Update Fixes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="232" FontFamily="Verdana" FontSize="18"/>
+                <Label Content="If you're having issues with Windows Update you can try this.&#xD;&#xA;This resets all Windows Update components, and restarts services. &#xD;&#xA;It also removes Windows Update group policies!&#xD;&#xA;&#xD;&#xA;Thanks to Shawn Brink on tenforums.com for this script.&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Height="114" Width="447" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="363,130,0,242" Height="18" Width="141" FontSize="14">
+                    <Hyperlink x:Name="WUSourceLabel" NavigateUri="https://www.tenforums.com/tutorials/24742-reset-windows-update-windows-10-a.html" RequestNavigate="Hyperlink_RequestNavigate" FontSize="12">Source for the script</Hyperlink>
+                </TextBlock>
+                <Button x:Name="WupdButton" Content="Reset Windows Update!" HorizontalAlignment="Left" Margin="243,197,0,0" VerticalAlignment="Top" Width="299" Height="106" FontSize="24" Click="WupdButton_Click"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Windows Store Reset">
+            <Grid>
+                <Label Content="Windows Store Fixes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="232" FontFamily="Verdana" FontSize="18"/>
+                <Label Content="If you're having issues with Windows Store you can try this.&#xD;&#xA;It resets Windows Store through a native tool called WSReset.&#xD;&#xA;It can fix issues with Windows Store not being able to find new apps,&#xD;&#xA;updates, whatever." HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Height="114" Width="447" FontSize="14"/>
+                <Button x:Name="WSResetButton" Content="Reset Windows Store!" HorizontalAlignment="Left" Margin="243,197,0,0" VerticalAlignment="Top" Width="299" Height="106" FontSize="24" Click="WSResetButton_Click"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Integrity Checks &amp; Fixes">
+            <Grid>
+                <Label Content="Integrity Checks &amp; Fixes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="232" FontFamily="Verdana" FontSize="18"/>
+                <Label Content="This is a tool to check if your Windows system has all the files it needs.&#xD;&#xA;It fixes corrupt/missing files and can probably boost system performance.&#xD;&#xA;It's always great to check every month or two if you suspect something is broken." HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Height="142" Width="532" FontSize="14"/>
+                <Button x:Name="IntegrityFixButton" Content="Fix this!" HorizontalAlignment="Left" Margin="243,197,0,0" VerticalAlignment="Top" Width="299" Height="106" FontSize="24" Click="IntegrityFixButton_click"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Disk Cleanup">
+            <Grid>
+                <Label Content="Disk Cleanup" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="162" FontFamily="Verdana" FontSize="18"/>
+                <Label Content="I'd make a tool to clean up your disk(s), but Windows already has a tool built in to clean up your disk(s), and it does&#xA;most of what I'd think to do.&#xA;&#xA;Therefore, when you click &quot;Start cleaning your disk(s)&quot; the tool is not developed by me, so I can't fix any bugs.&#xA;Enough rambling," HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" Height="132" Width="784" FontSize="14"/>
+                <Button x:Name="CleanDiskButton" Content="Click here to start cleaning your disk(s)" HorizontalAlignment="Left" Margin="209,213,0,0" VerticalAlignment="Top" Width="358" Height="91" FontSize="20" Click="CleanDiskButton_Click"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Resources">
+            <!-- This should be filled out. -->
+            <Grid>
+                <Label Content="Resources" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="232" FontFamily="Verdana" FontSize="18"/>
+                <Label Content="Links to cool apps that everyone should have. (None of these are affiliated with &#xD;&#xA;the Fixdows dev team, we just think they're great.)" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Height="50" Width="532" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,105,0,267" Height="18" Width="55" FontSize="14">
+                    <Hyperlink x:Name="EverythingLabel" FontSize="12" NavigateUri="https://voidtools.com" RequestNavigate="Hyperlink_RequestNavigate">Everything</Hyperlink>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="70,105,0,267" Height="18" Width="237" Text="- Locate files and folders by name instantly."/>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,128,0,244" Height="18" Width="60" FontSize="14" RenderTransformOrigin="0.424,3.765">
+                    <Hyperlink x:Name="WDSLabel" NavigateUri="https://windirstat.net" RequestNavigate="Hyperlink_RequestNavigate" FontSize="12">WinDirStat</Hyperlink>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="70,128,0,244" Height="18" Width="249" Text="- Look at what uses most space on your disk(s)."/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="About Fixdows">
+            <Grid>
+                <Label Content="Fixdows" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="101" FontSize="18" FontFamily="Verdana"/>
+                <Label Content="Fixdows is a tool made in C# to repair common issues among Windows computers.&#xD;&#xA;Licensed with GPL3." HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Height="46" Width="527" FontSize="14"/>
+                <Label x:Name="VersionLabel" Content="ver" HorizontalAlignment="Left" Margin="89,9,0,0" Height="33" Width="98" FontSize="18" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="1.377,0.53"/>
+                <Label Content="Made by Odyssey346." HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Height="32" Width="284" FontSize="14"/>
+                <Button x:Name="AboutRedirButtonGithub" Content="Fixdows Github" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="101" Height="26" Click="AboutRedirButtonGithub_Click"/>
+                <Button x:Name="AboutRedirButtonMyEmail" Content="Odyssey346's E-mail" HorizontalAlignment="Left" Margin="131,137,0,0" VerticalAlignment="Top" Width="123" Height="26" Click="AboutRedirButtonMyEmail_Click"/>
+                <TextBlock Margin="269,0,247,24" Text="Want to get involved? Have feedback? " TextWrapping="Wrap" Height="16" Width="268" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Hyperlink NavigateUri="https://github.com/Odyssey346/Fixdows/wiki/Contributing" RequestNavigate="Hyperlink_RequestNavigate">Click here!</Hyperlink>
+                </TextBlock>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
